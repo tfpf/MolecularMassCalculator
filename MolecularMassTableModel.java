@@ -1,0 +1,30 @@
+import javax.swing.table.DefaultTableModel;
+
+///////////////////////////////////////////////////////////////////////////////
+// Class derived from `DefaultTableModel'. This is implemented because one
+// column in the table is supposed to contain integers, not strings.
+///////////////////////////////////////////////////////////////////////////////
+public class MolecularMassTableModel extends DefaultTableModel
+{
+    ///////////////////////////////////////////////////////////////////////////
+    // Constructor.
+    ///////////////////////////////////////////////////////////////////////////
+    MolecularMassTableModel(String[] columnNames, int rows)
+    {
+        super(columnNames, rows);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Allows automatic type detection of the entries.
+    ///////////////////////////////////////////////////////////////////////////
+    public Class getColumnClass(int column)
+    {
+        switch(column)
+        {
+            case 0:  return String.class;
+            case 1:  return Integer.class;
+            default: return String.class;
+        }
+    }
+}
+

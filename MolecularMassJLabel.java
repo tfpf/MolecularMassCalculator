@@ -1,0 +1,30 @@
+import java.awt.Font;
+
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+///////////////////////////////////////////////////////////////////////////////
+// Class derived from `JLabel'. The default font size of the text in a `JLabel'
+// is too large. `MolecularMassJLabel' aims to fix this problem.
+///////////////////////////////////////////////////////////////////////////////
+public class MolecularMassJLabel extends JLabel
+{
+    ///////////////////////////////////////////////////////////////////////////
+    // Constructor.
+    ///////////////////////////////////////////////////////////////////////////
+    MolecularMassJLabel(String text)
+    {
+        super(text, SwingConstants.CENTER);
+        this.setFont(new Font("DejaVu Sans", Font.PLAIN, 8));
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Constructor.
+    ///////////////////////////////////////////////////////////////////////////
+    MolecularMassJLabel(String text, int size)
+    {
+        super(text, SwingConstants.CENTER);
+        this.setFont(new Font("DejaVu Sans", Font.PLAIN, size));
+    }
+}
+
