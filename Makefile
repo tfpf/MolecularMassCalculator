@@ -1,8 +1,8 @@
 SHELL    = /bin/sh
 JC       = javac
-JFLAGS   = -g -d Classes/
+JFLAGS   = -g -d classes/
 JVM      = java
-JVMFLAGS = -cp Classes/
+JVMFLAGS = -cp classes/
 JAR      = jar cf
 
 ClassName  = MolecularMassCalculator
