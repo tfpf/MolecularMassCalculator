@@ -1,10 +1,12 @@
-SHELL   = /bin/sh
-JC      = javac
-JVM     = java
-JFLAGS  = -g
+SHELL    = /bin/sh
+JC       = javac
+JFLAGS   = -g -d Classes/
+JVM      = java
+JVMFLAGS = -cp Classes/
+JAR      = jar cf
 
-Class  = MolecularMassCalculator
-Source = $(Class).java
+ClassName  = MolecularMassCalculator
+Source     = src/*.java
 
 
 .PHONY: comp exec run
@@ -14,7 +16,7 @@ comp:
 	$(JC) $(JFLAGS) $(Source)
 
 exec:
-	$(JVM) $(Class)
+	$(JVM) $(JVMFLAGS) $(ClassName)
 
 run: comp exec
 
