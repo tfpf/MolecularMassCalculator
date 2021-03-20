@@ -1,0 +1,30 @@
+import javax.swing.table.DefaultTableModel;
+
+///////////////////////////////////////////////////////////////////////////////
+// Class derived from `DefaultTableModel'. This is implemented to specify the
+// types of the contents of the table.
+///////////////////////////////////////////////////////////////////////////////
+public class MolecularMassTableModel extends DefaultTableModel
+{
+    ///////////////////////////////////////////////////////////////////////////
+    // Constructor.
+    ///////////////////////////////////////////////////////////////////////////
+    MolecularMassTableModel(String[] columnNames, int rows)
+    {
+        super(columnNames, rows);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Indicate the types of the entries in the table.
+    ///////////////////////////////////////////////////////////////////////////
+    public Class getColumnClass(int column)
+    {
+        switch(column)
+        {
+            case 0:  return String.class;
+            case 1:  return Integer.class;
+            default: return String.class;
+        }
+    }
+}
+
