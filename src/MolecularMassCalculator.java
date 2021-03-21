@@ -303,7 +303,7 @@ public class MolecularMassCalculator extends JFrame
             mass += masses.get(s) * n;
         }
 
-        lblMass.setText(String.valueOf(mass) + " u");
+        lblMass.setText(mass + " u");
     }
 
     ///////////////////////////////////////////////////////////////////////////
