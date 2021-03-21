@@ -9,6 +9,7 @@ import java.awt.Insets;
 import javax.swing.BorderFactory;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -47,6 +48,7 @@ public class MolecularMassCalculator extends JFrame
         super(name);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setIconImage(new ImageIcon("icons/MolecularMassCalculatorIcon.png").getImage());
         setLocation(100, 100);
         setResizable(false);
         setSize(defaultWidth, defaultHeight);
