@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -5,6 +7,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+
+import java.util.HashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.event.TableModelEvent;
@@ -15,9 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
-
-import java.util.HashMap;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Class derived from `JFrame'. Displays a window in which the constitution of
@@ -29,9 +32,9 @@ public class MolecularMassCalculator extends JFrame
 {
     private int defaultWidth = 100;
     private int defaultHeight = 100;
-    private int borderWidth = 10;
+    private int borderWidth = 24;
     private int padWidth = borderWidth / 2;
-    private int fontSize = 8;
+    private int fontSize = 16;
 
     private MolecularMassJLabel lblMass;
 
@@ -46,6 +49,8 @@ public class MolecularMassCalculator extends JFrame
     MolecularMassCalculator(String name)
     {
         super(name);
+
+        ConstructMassMap();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setIconImage(new ImageIcon("icons/MolecularMassCalculatorIcon.png").getImage());
@@ -86,6 +91,24 @@ public class MolecularMassCalculator extends JFrame
         table.getTableHeader().setFont(new Font("DejaVu Sans", Font.BOLD, fontSize));
         table.setPreferredScrollableViewportSize(new Dimension(150, 150));
         table.setModel(model);
+        table.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer ()
+        {
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+            {
+                Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                String symbol = (String)value;
+                if(symbol != null && !symbol.equals("") && !masses.containsKey(symbol))
+                {
+                    component.setBackground(Color.YELLOW);
+                }
+                else
+                {
+                    component.setBackground(Color.WHITE);
+                }
+
+                return component;
+            }
+        });
         this.table = table;
 
         // Scrollable section of the frame.
@@ -127,8 +150,6 @@ public class MolecularMassCalculator extends JFrame
 
         pack();
         setVisible(true);
-
-        ConstructMassMap();
     }
 
     ///////////////////////////////////////////////////////////////////////////

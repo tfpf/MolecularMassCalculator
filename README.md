@@ -10,6 +10,8 @@ make run
 to do just that.
 
 # Notes
-* Invalid inputs are silently ignored.
+* Wrongly entered element symbols are highlighted in yellow.
+* If the number of atoms entered is negative, it is not considered for mass
+calculation.
 * The mass is automatically updated when the table is modified.
 
